@@ -1,0 +1,76 @@
+[gd_scene load_steps=12 format=3 uid="uid://dbfkva8m14byd"]
+
+[ext_resource type="Texture2D" uid="uid://d2e77fpjhx8d6" path="res://Assets/farm.png" id="1_1bveb"]
+[ext_resource type="Script" uid="uid://brcadwwpmjj2w" path="res://Scrips/farm.gd" id="1_farmgd"]
+[ext_resource type="PackedScene" uid="uid://bh30cwxvoj6sm" path="res://Scenes/gun_mode.tscn" id="2_1yvdp"]
+[ext_resource type="PackedScene" uid="uid://byl32p6ehyljg" path="res://Scenes/add_animal.tscn" id="4_30eac"]
+[ext_resource type="Texture2D" uid="uid://cnpb374kijodj" path="res://Assets/save.png" id="4_78d4p"]
+[ext_resource type="Texture2D" uid="uid://h4ekdnxis82f" path="res://Assets/load.png" id="5_xrnc3"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_1bveb"]
+vertices = PackedVector2Array(111.461, -26.4766, 115.469, 53.7813, -114.922, 49.1875, 2.53906, -32.2813, -114.078, -57.3984, -10.4766, -51.2969)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(3, 2, 4, 5)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-124, -68, -5, -61, 8, -42, 121, -36, 126, 64, -125, 59)])
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lq2xg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_78d4p"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xrnc3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dojjk"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_farmgd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.149859, 0.149859)
+texture = ExtResource("1_1bveb")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 92.0
+offset_top = -73.0
+offset_right = 143.0
+offset_bottom = -51.0
+color = Color(0.197937, 0.197937, 0.197937, 1)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(4, 4)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+position = Vector2(-1, 0)
+navigation_polygon = SubResource("NavigationPolygon_1bveb")
+
+[node name="CheckButton" parent="." instance=ExtResource("2_1yvdp")]
+offset_left = 88.0
+offset_top = -73.0
+offset_right = 132.0
+offset_bottom = -49.0
+scale = Vector2(0.870426, 0.870426)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_lq2xg")
+
+[node name="Add Animal" parent="." instance=ExtResource("4_30eac")]
+offset_left = 10.0
+offset_top = -81.0
+offset_right = 34.0
+offset_bottom = -57.0
+scale = Vector2(1.23385, 1.23385)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_78d4p")
+
+[node name="Save" type="Button" parent="."]
+offset_left = 39.0
+offset_top = -77.0
+offset_right = 111.0
+offset_bottom = -5.00001
+scale = Vector2(0.295451, 0.295451)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xrnc3")
+icon = ExtResource("4_78d4p")
+
+[node name="Load" type="Button" parent="."]
+offset_left = 64.0
+offset_top = -76.0
+offset_right = 136.0
+offset_bottom = -4.0
+scale = Vector2(0.295451, 0.295451)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_dojjk")
+icon = ExtResource("5_xrnc3")

@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://bh30cwxvoj6sm"]
+
+[ext_resource type="Texture2D" uid="uid://d3jgjh2ib3anh" path="res://Assets/gun.png" id="1_ekg77"]
+
+[node name="CheckButton" type="CheckButton"]
+offset_right = 44.0
+offset_bottom = 24.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(53, 11)
+scale = Vector2(0.432027, 0.432027)
+texture = ExtResource("1_ekg77")

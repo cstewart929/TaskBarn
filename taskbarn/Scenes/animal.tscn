@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://bvus0lsv1d1x7"]
+
+[ext_resource type="Texture2D" uid="uid://jmjsvps0najm" path="res://Assets/egg.png" id="1_2gra4"]
+[ext_resource type="Script" uid="uid://dl6aip7xdjkay" path="res://Scrips/animal.gd" id="1_2k4m3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2gra4"]
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+scale = Vector2(0.337792, 0.337792)
+script = ExtResource("1_2k4m3")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(3.19624, 3.19624)
+shape = SubResource("RectangleShape2D_2gra4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_2gra4")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(3.19624, 3.19624)
+shape = SubResource("RectangleShape2D_2gra4")
+
+[node name="NameLabel" type="Label" parent="."]
+offset_left = -26.6436
+offset_top = -56.2476
+offset_right = 29.3564
+offset_bottom = -33.2476
+scale = Vector2(1.00275, 0.996353)

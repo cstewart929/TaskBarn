@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://byl32p6ehyljg"]
+
+[ext_resource type="Texture2D" uid="uid://cu7h1lut3gsqc" path="res://Assets/add.png" id="1_hpn05"]
+
+[node name="Button" type="Button"]
+offset_right = 8.0
+offset_bottom = 8.0
+icon = ExtResource("1_hpn05")
