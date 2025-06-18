@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dbfkva8m14byd"]
+[gd_scene load_steps=13 format=3 uid="uid://dbfkva8m14byd"]
 
 [ext_resource type="Texture2D" uid="uid://d2e77fpjhx8d6" path="res://Assets/farm.png" id="1_1bveb"]
 [ext_resource type="Script" uid="uid://brcadwwpmjj2w" path="res://Scrips/farm.gd" id="1_farmgd"]
@@ -6,11 +6,12 @@
 [ext_resource type="PackedScene" uid="uid://byl32p6ehyljg" path="res://Scenes/add_animal.tscn" id="4_30eac"]
 [ext_resource type="Texture2D" uid="uid://cnpb374kijodj" path="res://Assets/save.png" id="4_78d4p"]
 [ext_resource type="Texture2D" uid="uid://h4ekdnxis82f" path="res://Assets/load.png" id="5_xrnc3"]
+[ext_resource type="PackedScene" uid="uid://c1x8ewea1slyg" path="res://Scenes/checklist_menu.tscn" id="6_checklist"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_1bveb"]
-vertices = PackedVector2Array(111.461, -26.4766, 115.469, 53.7813, -114.922, 49.1875, 2.53906, -32.2813, -114.078, -57.3984, -10.4766, -51.2969)
+vertices = PackedVector2Array(110.969, -9.89844, 112.469, 49.8906, -72.1563, 48.0938, -0.117188, -20.6406, -75.4688, -49.2422, -11.7813, -50.8203)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(3, 2, 4, 5)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-124, -68, -5, -61, 8, -42, 121, -36, 126, 64, -125, 59)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-85.8159, -59, -5, -61, 6.98731, -30, 120.746, -19, 122.742, 60, -81.8244, 58)])
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lq2xg"]
 
@@ -21,6 +22,7 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-124, -68, -5, -61, 8, 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dojjk"]
 
 [node name="Node2D" type="Node2D"]
+scale = Vector2(1.00212, 1)
 script = ExtResource("1_farmgd")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -74,3 +76,9 @@ offset_bottom = -4.0
 scale = Vector2(0.295451, 0.295451)
 theme_override_styles/focus = SubResource("StyleBoxEmpty_dojjk")
 icon = ExtResource("5_xrnc3")
+
+[node name="ChecklistMenu" parent="." instance=ExtResource("6_checklist")]
+offset_left = -144.0
+offset_top = -81.0
+offset_right = 146.0
+offset_bottom = 667.0

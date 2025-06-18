@@ -8,15 +8,18 @@ anchor_right = 0.5
 anchor_bottom = 1.0
 offset_right = -7.0
 offset_bottom = 53.0
-scale = Vector2(0.121193, 0.121193)
+scale = Vector2(0.2512, 0.2512)
+size_flags_horizontal = 0
+size_flags_vertical = 0
 script = ExtResource("1_h241g")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 0.405
-offset_bottom = 0.0949707
+anchor_right = 0.615
+anchor_bottom = 0.857
+offset_right = 0.0650024
+offset_bottom = 0.242981
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
@@ -69,6 +72,6 @@ size_flags_vertical = 3
 [node name="ChecklistContainer" type="VBoxContainer" parent="Panel/VBoxContainer/ScrollContainer"]
 layout_mode = 2
 
-[node name="CloseButton" type="Button" parent="Panel/VBoxContainer"]
+[node name="KillButton" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
-text = "Close"
+text = "Kill"
