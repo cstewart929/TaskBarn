@@ -52,33 +52,33 @@ scale = Vector2(0.870426, 0.870426)
 theme_override_styles/focus = SubResource("StyleBoxEmpty_lq2xg")
 
 [node name="Add Animal" parent="." instance=ExtResource("4_30eac")]
-offset_left = 10.0
-offset_top = -81.0
-offset_right = 34.0
-offset_bottom = -57.0
+offset_left = 14.9683
+offset_top = -76.0
+offset_right = 38.9683
+offset_bottom = -52.0
 scale = Vector2(1.23385, 1.23385)
 theme_override_styles/focus = SubResource("StyleBoxEmpty_78d4p")
 
 [node name="Save" type="Button" parent="."]
-offset_left = 39.0
-offset_top = -77.0
-offset_right = 111.0
-offset_bottom = -5.00001
+offset_left = 46.9006
+offset_top = -73.0
+offset_right = 118.901
+offset_bottom = -1.00001
 scale = Vector2(0.295451, 0.295451)
 theme_override_styles/focus = SubResource("StyleBoxEmpty_xrnc3")
 icon = ExtResource("4_78d4p")
 
 [node name="Load" type="Button" parent="."]
-offset_left = 64.0
-offset_top = -76.0
-offset_right = 136.0
-offset_bottom = -4.0
+offset_left = 70.8498
+offset_top = -73.0
+offset_right = 142.85
+offset_bottom = -1.0
 scale = Vector2(0.295451, 0.295451)
 theme_override_styles/focus = SubResource("StyleBoxEmpty_dojjk")
 icon = ExtResource("5_xrnc3")
 
 [node name="ChecklistMenu" parent="." instance=ExtResource("6_checklist")]
-offset_left = -144.0
-offset_top = -81.0
-offset_right = 146.0
-offset_bottom = 667.0
+offset_left = -142.0
+offset_top = -78.0
+offset_right = 185.0
+offset_bottom = 651.0

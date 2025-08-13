@@ -25,8 +25,9 @@ scale = Vector2(3.19624, 3.19624)
 shape = SubResource("RectangleShape2D_2gra4")
 
 [node name="NameLabel" type="Label" parent="."]
-offset_left = -26.6436
+offset_left = -40
 offset_top = -56.2476
-offset_right = 29.3564
+offset_right = 40
 offset_bottom = -33.2476
-scale = Vector2(1.00275, 0.996353)
+scale = Vector2(1, 1)
+horizontal_alignment = 1
