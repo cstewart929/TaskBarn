@@ -72,7 +72,7 @@ func _refresh_checklist():
 		child.queue_free()
 	for i in range(tasks.size()):
 		var row = HBoxContainer.new()
-		row.custom_minimum_size = Vector2(180, 0) # Set max width for the row
+		row.custom_minimum_size = Vector2(180, 0)
 		var checkbox = CheckBox.new()
 		checkbox.button_pressed = tasks[i]["completed"]
 		checkbox.toggled.connect(func(pressed): _on_task_toggled(i, pressed))

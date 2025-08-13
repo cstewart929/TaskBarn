@@ -1,6 +1,5 @@
 extends CharacterBody2D
 
-# Nodes
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
 @onready var area: Area2D = $Area2D
@@ -9,20 +8,16 @@ var checklist_menu: Control = null
 @onready var name_label: Label = $NameLabel
 var animal_id: String = ""
 
-# Animal data
 var animal_name: String = ""
 var tasks: Array = []
 var is_menu_open: bool = false
 
-# Movement
 var roam_timer: float = 0.0
 var roam_pause: float = 1.0
 
-# Add nav polygon cache for drag/throw clamping
 var nav_vertices: Array = []
 var nav_global: Vector2 = Vector2.ZERO
 
-# Drag and throw
 var is_dragging: bool = false
 var drag_offset: Vector2 = Vector2.ZERO
 var last_mouse_pos: Vector2 = Vector2.ZERO
@@ -32,26 +27,21 @@ var last_stage: int = -1
 var smoke_scene: PackedScene = preload("res://Scenes/smoke_puff.tscn")
 
 func _ready():
-	# Connect click signal
 	area.input_event.connect(_on_area_input_event)
-	# Generate unique ID if not loaded
 	if animal_id == "":
 		animal_id = str(randi()) + "_" + str(Time.get_unix_time_from_system()) + "_" + str(Time.get_ticks_usec())
-	# Register with AnimalManager
+
 	AnimalManager.register_animal(self)
-	# Load animal data from manager if present
+
 	var all_data = AnimalManager.load_all()
 	if animal_id in all_data:
 		var d = all_data[animal_id]
 		animal_name = d.get("name", "")
 		tasks = d.get("tasks", [])
-	# Set initial texture
 	update_texture()
-	# Set name label
 	name_label.text = animal_name
-	# Start roaming
 	sprite.z_index = 900
-	# Cache nav polygon for drag/throw
+
 	var nav_region = get_tree().get_root().find_child("NavigationRegion2D", true, false)
 	if nav_region:
 		var nav_poly = nav_region.navigation_polygon
@@ -71,7 +61,6 @@ func _process(delta):
 		roam_to_random_point()
 
 func roam_to_random_point():
-	# Find the NavigationRegion2D in the scene tree
 	var nav_region = get_tree().get_root().find_child("NavigationRegion2D", true, false)
 	if nav_region == null:
 		return
@@ -106,25 +95,23 @@ func _physics_process(delta):
 	if is_dragging:
 		velocity = Vector2.ZERO
 		return
-	# Throwing logic
+
 	if throw_velocity.length() > 0.1:
 		global_position += throw_velocity * delta
 		throw_velocity = throw_velocity.move_toward(Vector2.ZERO, 100 * delta)
 	else:
 		throw_velocity = Vector2.ZERO
 	if !is_menu_open:
-		# Move towards target
 		if nav_agent.is_navigation_finished():
 			velocity = Vector2.ZERO
 		else:
 			velocity = nav_agent.get_next_path_position() - global_position
-			velocity = velocity.normalized() * 50 # Adjust speed as needed
+			velocity = velocity.normalized() * 50
 		move_and_slide()
 
 func _on_area_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			# Open menu or gun mode
 			var farm = get_tree().get_root().find_child("Node2D", true, false)
 			if farm:
 				if farm.gun_mode_active:
@@ -133,7 +120,6 @@ func _on_area_input_event(viewport, event, shape_idx):
 					farm.show_animal_menu(self)
 		elif event.button_index == MOUSE_BUTTON_RIGHT:
 			if event.pressed:
-				# Start drag
 				is_dragging = true
 				drag_offset = global_position - event.global_position
 				last_mouse_pos = event.global_position
@@ -145,7 +131,6 @@ func _input(event):
 			throw_velocity = (event.global_position - last_mouse_pos) * 5.0
 			last_mouse_pos = event.global_position
 		elif event is InputEventMouseButton and not event.pressed and event.button_index == MOUSE_BUTTON_RIGHT:
-			# End drag on mouse release anywhere
 			is_dragging = false
 			throw_velocity = (event.global_position - last_mouse_pos) * 5.0
 
@@ -168,7 +153,6 @@ func update_texture():
 		tex_path = "res://Assets/dragon.png"
 		stage = 4
 	if stage != last_stage:
-		# Play smoke puff
 		var smoke = smoke_scene.instantiate()
 		get_tree().current_scene.add_child(smoke)
 		smoke.global_position = global_position
@@ -181,11 +165,8 @@ func _exit_tree():
 
 func _on_body_entered(body):
 	if body is CharacterBody2D and body != self:
-		# Stop and reverse direction
 		if nav_agent.is_navigation_finished():
 			return
-		# Reverse direction by picking a new random roam point
 		roam_to_random_point()
-		# Also tell the other animal to reverse
 		if "roam_to_random_point" in body:
 			body.roam_to_random_point()

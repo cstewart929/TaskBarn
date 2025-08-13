@@ -31,17 +31,14 @@ func _spawn_animals_from_save():
 		max_x = max(max_x, v.x)
 		min_y = min(min_y, v.y)
 		max_y = max(max_y, v.y)
-	# Calculate screen width for menu avoidance
 	var viewport_width = get_viewport().size.x
 	var menu_right = viewport_width / 3.0
 	for id in all_data.keys():
 		var animal = animal_scene.instantiate()
 		animal.animal_id = id
-		# Set animal data from save
 		var d = all_data[id]
 		animal.animal_name = d.get("name", "")
 		animal.tasks = d.get("tasks", [])
-		# Random position logic, avoid left third
 		var tries = 0
 		var pos = Vector2.ZERO
 		while tries < 20:
@@ -73,7 +70,6 @@ func _on_add_animal_pressed():
 		max_x = max(max_x, v.x)
 		min_y = min(min_y, v.y)
 		max_y = max(max_y, v.y)
-	# Calculate screen width for menu avoidance
 	var viewport_width = get_viewport().size.x
 	var menu_right = viewport_width / 3.0
 	var tries = 0
@@ -92,7 +88,6 @@ func _on_add_animal_pressed():
 	animal.z_index = 1000
 	add_child(animal)
 
-# Called by animal when clicked
 func show_animal_menu(animal):
 	checklist_menu.current_animal = animal
 	checklist_menu.set_animal_name(animal.animal_name)
